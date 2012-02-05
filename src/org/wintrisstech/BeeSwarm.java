@@ -27,18 +27,13 @@ public class BeeSwarm extends JComponent implements ActionListener
     private Image beeLeft;
     private Image beeRight;
     
-    private final int windowHeight = 751;
-    private final int windowWidth = 1024;
-    private final int queenWidth = 100;
-    private final int queenHeight = queenWidth * 75 / 100;
+    public static final int windowHeight = 751;
+    public static final int windowWidth = 1024;
 
     private int counter = 0;
-    private int lastQueenX;
-    private boolean queenIsMovingRight;
-    private int queenX = windowWidth / 2;
-    private int queenY = windowHeight / 2;
     
     private Flower[] f = new Flower[20];
+    private QueenBee q = new QueenBee();
 
     public static void main(String[] args) throws IOException
     {
@@ -83,17 +78,17 @@ public class BeeSwarm extends JComponent implements ActionListener
             g.drawImage(f[i].image, f[i].x, f[i].y, f[i].width, f[i].height, null);
         }
 
-        if (queenIsMovingRight)
+        if (q.isMovingRight)
         {
-            g.drawImage(beeRight, queenX - queenWidth / 2,
-                    queenY - queenHeight / 2,
-                    queenWidth, queenHeight, null);
+            g.drawImage(beeRight, q.x - q.width / 2,
+                    q.y - q.height / 2,
+                    q.width, q.height, null);
         }
         else
         {
-            g.drawImage(beeLeft, queenX - queenWidth / 2,
-                    queenY - queenHeight / 2,
-                    queenWidth, queenHeight, null);
+            g.drawImage(beeLeft, q.x - q.width / 2,
+                    q.y - q.height / 2,
+                    q.width, q.height, null);
 
         }
     }
@@ -125,21 +120,21 @@ public class BeeSwarm extends JComponent implements ActionListener
 
         // Save the queen's last X position so we can calculate later which
         // direction it is moving
-        lastQueenX = queenX;
+        q.lastX = q.x;
 
         // Convert cr and ci (which range from -2 to +2) into X-Y coordinates
         // in our window
-        queenX = (int) ((cr + 2) / 4 * windowWidth);
-        queenY = (int) ((ci + 2) / 4 * windowHeight);
+        q.x = (int) ((cr + 2) / 4 * windowWidth);
+        q.y = (int) ((ci + 2) / 4 * windowHeight);
 
         // Calculate whether the queen is moving right or left
-        if (queenX > lastQueenX)
+        if (q.x > q.lastX)
         {
-            queenIsMovingRight = true;
+            q.isMovingRight = true;
         }
         else
         {
-            queenIsMovingRight = false;
+            q.isMovingRight = false;
         }
     }
 }

@@ -7,6 +7,8 @@ import javax.imageio.ImageIO;
 
 public class Flower {
     
+    public static final int typesOfFlowers = 3;
+    
     private Random r = new Random();
     public int x = r.nextInt(1024);
     public int y = r.nextInt(350) + 400;
