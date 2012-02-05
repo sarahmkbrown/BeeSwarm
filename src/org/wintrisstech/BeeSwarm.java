@@ -1,5 +1,6 @@
 package org.wintrisstech;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -36,6 +37,8 @@ public class BeeSwarm extends JComponent implements ActionListener
     private boolean queenIsMovingRight;
     private int queenX = windowWidth / 2;
     private int queenY = windowHeight / 2;
+    
+    private Flower f = new Flower();
 
     public static void main(String[] args) throws IOException
     {
@@ -70,6 +73,8 @@ public class BeeSwarm extends JComponent implements ActionListener
     protected void paintComponent(Graphics g)
     {
         g.drawImage(background, 0, 0, windowWidth, windowHeight, null);
+        
+        g.drawImage(f.image, f.x, f.y, f.width, f.height, null);
 
         if (queenIsMovingRight)
         {
