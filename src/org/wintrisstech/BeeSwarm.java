@@ -30,8 +30,6 @@ public class BeeSwarm extends JComponent implements ActionListener
     public static final int windowHeight = 751;
     public static final int windowWidth = 1024;
 
-    private int counter = 0;
-    
     private Flower[] f = new Flower[20];
     private QueenBee q = new QueenBee();
 
@@ -60,7 +58,7 @@ public class BeeSwarm extends JComponent implements ActionListener
         }
         
         // Initialize the queen's position
-        updateQueen();
+        q.update();
     }
 
     @Override
@@ -96,45 +94,10 @@ public class BeeSwarm extends JComponent implements ActionListener
     @Override
     public void actionPerformed(ActionEvent ae)
     {
-        updateQueen();
+        q.update();
 
         repaint();
     }
 
-    private void updateQueen()
-    {
-        // Increment the counter used to calculate cr and ci.  The faster
-        // we increment this, the faster the queen will move.
-        counter += 2;
-
-        // This is code taken from the Julia screensaver which calculates the 
-        // position of a point that wanders around the screen.
-        // http://www.jwz.org/xscreensaver/
-        double cr = 1.5 * (Math.sin(Math.PI * (counter / 290.0))
-                * Math.sin(counter * Math.PI / 210.0));
-        double ci = 1.5 * (Math.cos(Math.PI * (counter / 310.0))
-                * Math.cos(counter * Math.PI / 190.0));
-
-        cr += 0.5 * Math.cos(Math.PI * counter / 395.0);
-        ci += 0.5 * Math.sin(Math.PI * counter / 410.0);
-
-        // Save the queen's last X position so we can calculate later which
-        // direction it is moving
-        q.lastX = q.x;
-
-        // Convert cr and ci (which range from -2 to +2) into X-Y coordinates
-        // in our window
-        q.x = (int) ((cr + 2) / 4 * windowWidth);
-        q.y = (int) ((ci + 2) / 4 * windowHeight);
-
-        // Calculate whether the queen is moving right or left
-        if (q.x > q.lastX)
-        {
-            q.isMovingRight = true;
-        }
-        else
-        {
-            q.isMovingRight = false;
-        }
-    }
+   
 }
