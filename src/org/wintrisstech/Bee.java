@@ -11,8 +11,10 @@ public class Bee
 
     private Image image;
     private Random r = new Random();
-    private int x = r.nextInt(BeeSwarm.windowWidth);
-    private int y = r.nextInt(BeeSwarm.windowHeight);
+    private int x = r.nextInt(BeeSwarm.windowWidth * 2) - BeeSwarm.windowWidth / 2 ;
+    private int y = r.nextInt(BeeSwarm.windowHeight * 2)- BeeSwarm.windowHeight / 2;
+    private double vx = 0;
+    private double vy = 0;
     private final int width = 20;
     private final int height = 20;
     private int counter = 0;
@@ -31,45 +33,31 @@ public class Bee
 
     public void update(QueenBee q, Bee[] b)
     {
-        float xDesire = 0;
-        float yDesire = 0;
-
-        if (x < q.x)
-        {
-            xDesire += 5;
-        } else
-        {
-            xDesire -= 5;
-        }
-        if (y < q.y)
-        {
-            yDesire += 5;
-        } else
-        {
-            yDesire -= 5;
-        }
+//        x += vx;
+//        y += vy;
+        
+        double xDesire = 0;
+        double yDesire = 0;
+        
+        xDesire -= (x - q.x) / 40.0;
+        yDesire -= (y - q.y) / 40.0;        
 
         for (int i = 0; i < b.length; i++)
         {
-            if (x < b[i].x)
-            {
-                xDesire -= .3;
-            } else
-            {
-                xDesire += .3;
+            int dX = x - b[i].x;
+            if (Math.abs(dX) < 100) {
+                xDesire += dX / 1000.0;            
             }
-            if (y < b[i].y)
-            {
-                yDesire -= .3;
-            } else
-            {
-                yDesire += .3;
+            int dY = y - b[i].y;
+            if (Math.abs(dY) < 100) {
+                yDesire += dY / 1000.0;
             }
-
         }
 
         x += xDesire;
         y += yDesire;
+//        vx += xDesire / 20;
+//        vy += yDesire / 20;
 
     }
 }
