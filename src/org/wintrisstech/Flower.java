@@ -11,11 +11,11 @@ public class Flower
 
     public static final int typesOfFlowers = 3;
     private Random r = new Random();
-    public int x = r.nextInt(1024);
-    public int y = r.nextInt(350) + 400;
-    public int width = 40;
-    public int height = 60;
-    public Image image;
+    private int x = r.nextInt(1024);
+    private int y = r.nextInt(350) + 400;
+    private int width = 40;
+    private int height = 60;
+    private Image image;
 
     public Flower() throws IOException
     {

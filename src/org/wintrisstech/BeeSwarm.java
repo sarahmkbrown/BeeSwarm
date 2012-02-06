@@ -30,6 +30,7 @@ public class BeeSwarm extends JComponent implements ActionListener
 
     private Flower[] f = new Flower[20];
     private QueenBee q = new QueenBee();
+    private Bee[] b = new Bee[20];
 
     public static void main(String[] args) throws IOException
     {
@@ -53,6 +54,10 @@ public class BeeSwarm extends JComponent implements ActionListener
             f[i] = new Flower();
         }
         
+        for(int i = 0; i < b.length; i++) {
+            b[i] = new Bee();
+        }
+        
         // Initialize the queen's position
         q.update();
     }
@@ -71,6 +76,11 @@ public class BeeSwarm extends JComponent implements ActionListener
         for(int i = 0; i < f.length; i++)
         {
             f[i].paint(g);
+        }
+        
+        for(int i = 0; i < b.length; i++) 
+        {
+            b[i].paint(g);
         }
 
         q.paint(g);

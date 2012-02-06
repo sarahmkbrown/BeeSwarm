@@ -10,12 +10,12 @@ public class QueenBee
 
     private Image beeLeft;
     private Image beeRight;
-    public int lastX;
-    public boolean isMovingRight;
-    public int x = BeeSwarm.windowWidth / 2;
-    public int y = BeeSwarm.windowHeight / 2;
-    public int width = 100;
-    public int height = width * 75 / 100;
+    private int lastX;
+    private boolean isMovingRight;
+    private int x = BeeSwarm.windowWidth / 2;
+    private int y = BeeSwarm.windowHeight / 2;
+    private int width = 100;
+    private int height = width * 75 / 100;
     private int counter = 0;
 
     public QueenBee() throws IOException
