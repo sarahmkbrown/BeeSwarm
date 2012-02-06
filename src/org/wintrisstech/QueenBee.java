@@ -1,8 +1,15 @@
 package org.wintrisstech;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 public class QueenBee
 {
 
+    private Image beeLeft;
+    private Image beeRight;
     public int lastX;
     public boolean isMovingRight;
     public int x = BeeSwarm.windowWidth / 2;
@@ -10,6 +17,29 @@ public class QueenBee
     public int width = 100;
     public int height = width * 75 / 100;
     private int counter = 0;
+
+    public QueenBee() throws IOException
+    {
+        beeLeft = ImageIO.read(getClass().getResource("bee_left.png"));
+        beeRight = ImageIO.read(getClass().getResource("bee_right.png"));
+    }
+
+    public void paint(Graphics g)
+    {
+
+        if (isMovingRight)
+        {
+            g.drawImage(beeRight, x - width / 2,
+                    y - height / 2,
+                    width, height, null);
+        } else
+        {
+            g.drawImage(beeLeft, x - width / 2,
+                    y - height / 2,
+                    width, height, null);
+
+        }
+    }
 
     public void update()
     {

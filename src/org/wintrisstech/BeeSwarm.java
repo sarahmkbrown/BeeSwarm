@@ -24,8 +24,6 @@ public class BeeSwarm extends JComponent implements ActionListener
 {
 
     private Image background;
-    private Image beeLeft;
-    private Image beeRight;
     
     public static final int windowHeight = 751;
     public static final int windowWidth = 1024;
@@ -50,8 +48,6 @@ public class BeeSwarm extends JComponent implements ActionListener
     public BeeSwarm() throws IOException
     {
         background = ImageIO.read(getClass().getResource("carlitos_Cartoon_Landscape.png"));
-        beeLeft = ImageIO.read(getClass().getResource("bee_left.png"));
-        beeRight = ImageIO.read(getClass().getResource("bee_right.png"));
         
         for(int i = 0; i < f.length; i++) {
             f[i] = new Flower();
@@ -76,19 +72,8 @@ public class BeeSwarm extends JComponent implements ActionListener
             g.drawImage(f[i].image, f[i].x, f[i].y, f[i].width, f[i].height, null);
         }
 
-        if (q.isMovingRight)
-        {
-            g.drawImage(beeRight, q.x - q.width / 2,
-                    q.y - q.height / 2,
-                    q.width, q.height, null);
-        }
-        else
-        {
-            g.drawImage(beeLeft, q.x - q.width / 2,
-                    q.y - q.height / 2,
-                    q.width, q.height, null);
+        q.paint(g);
 
-        }
     }
 
     @Override
