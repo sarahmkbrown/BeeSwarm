@@ -68,8 +68,9 @@ public class BeeSwarm extends JComponent implements ActionListener
     {
         g.drawImage(background, 0, 0, windowWidth, windowHeight, null);
         
-        for(int i = 0; i < f.length; i++) {
-            g.drawImage(f[i].image, f[i].x, f[i].y, f[i].width, f[i].height, null);
+        for(int i = 0; i < f.length; i++)
+        {
+            f[i].paint(g);
         }
 
         q.paint(g);
