@@ -29,22 +29,47 @@ public class Bee
                 width, height, null);
     }
 
-    public void update(QueenBee q)
+    public void update(QueenBee q, Bee[] b)
     {
-        
+        float xDesire = 0;
+        float yDesire = 0;
+
         if (x < q.x)
         {
-            x += 5;
+            xDesire += 5;
         } else
         {
-            x -= 5;
+            xDesire -= 5;
         }
         if (y < q.y)
         {
-            y += 5;
-        } else 
+            yDesire += 5;
+        } else
         {
-            y -= 5;
+            yDesire -= 5;
         }
+
+        for (int i = 0; i < b.length; i++)
+        {
+            if (x < b[i].x)
+            {
+                xDesire -= .3;
+            } else
+            {
+                xDesire += .3;
+            }
+            if (y < b[i].y)
+            {
+                yDesire -= .3;
+            } else
+            {
+                yDesire += .3;
+            }
+
+        }
+
+        x += xDesire;
+        y += yDesire;
+
     }
 }
