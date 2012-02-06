@@ -29,19 +29,20 @@ public class Bee
                 width, height, null);
     }
 
-    public void update()
+    public void update(QueenBee q)
     {
-        if (x < BeeSwarm.windowWidth / 2)
+        
+        if (x < q.x)
         {
             x += 5;
-        } else if (x > BeeSwarm.windowWidth/2)
+        } else
         {
             x -= 5;
         }
-        if (y < BeeSwarm.windowHeight / 2)
+        if (y < q.y)
         {
             y += 5;
-        } else if (y > BeeSwarm.windowHeight / 2)
+        } else 
         {
             y -= 5;
         }

@@ -12,8 +12,8 @@ public class QueenBee
     private Image beeRight;
     private int lastX;
     private boolean isMovingRight;
-    private int x = BeeSwarm.windowWidth / 2;
-    private int y = BeeSwarm.windowHeight / 2;
+    public int x = BeeSwarm.windowWidth / 2;
+    public int y = BeeSwarm.windowHeight / 2;
     private int width = 100;
     private int height = width * 75 / 100;
     private int counter = 0;

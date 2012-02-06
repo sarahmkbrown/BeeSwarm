@@ -94,7 +94,7 @@ public class BeeSwarm extends JComponent implements ActionListener
         
         for(int i = 0; i < b.length; i++)
         {
-            b[i].update();
+            b[i].update(q);
         }
 
         repaint();
